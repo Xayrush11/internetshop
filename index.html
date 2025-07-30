@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интернет Магазин</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <?php session_start(); ?>
+    <header>
+        <div class="top-buttons">
+            <?php if (!isset($_SESSION['user'])): ?>
+                <a href="register.php">Регистрация</a>
+                <a href="login.php">Вход</a>
+            <?php else: ?>
+                <a href="logout.php">Выход</a>
+            <?php endif; ?>
+        </div>
+        <h1>Добро пожаловать в Интернет Магазин</h1>
+    </header>
+    <aside>
+        <ul>
+            <li><a href="#">Товары</a></li>
+            <li><a href="#">Категории</a></li>
+            <li><a href="#">Контакты</a></li>
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                <li><a href="admin.php">Админ панель</a></li>
+            <?php endif; ?>
+        </ul>
+    </aside>
+    <main>
+        <h2>Товары</h2>
+        <p>Здесь будут товары...</p>
+    </main>
+</body>
+</html>
